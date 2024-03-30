@@ -28,7 +28,7 @@ const Navbar = async ({}) => {
             </Link>
           ))}
         </ul>
-        <div className="flex items-center gap-0 lg:gap-7">
+        <div className="flex items-center gap-3 lg:gap-7">
           <Cart />
           {user ? (
             <UserAccountNav user={user} />
@@ -44,9 +44,9 @@ const Navbar = async ({}) => {
               <ArrowRight className="ml-2 w-5 h-5" />
             </Link>
           )}
-        </div>
-        <div className="lg:hidden">
-          <NavMenu />
+          <div className="lg:hidden">
+            <NavMenu />
+          </div>
         </div>
       </nav>
     </header>

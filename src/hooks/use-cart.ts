@@ -28,6 +28,7 @@ export const useCart = create<CartState>()(
             toast.info("This product is already in cart")
             return { items: [...state.items] }
           }
+          toast.success("Added To Cart")
           return { items: [...state.items, { product }] }
         })
       },

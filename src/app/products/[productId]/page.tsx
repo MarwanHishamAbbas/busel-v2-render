@@ -43,10 +43,10 @@ const Page: FC<ProductDetailsPage> = async ({ params }) => {
             width={600}
             height={600}
             alt="Product"
-            className="rounded-2xl h-[600px] w-full object-cover"
+            className="rounded-2xl lg:h-[600px] w-full object-cover"
           />
           <Card className="bg-foreground text-background">
-            <CardContent className="flex flex-col justify-between h-full py-12">
+            <CardContent className="flex flex-col justify-between h-full py-12 gap-5">
               <div className="space-y-6">
                 <h1 className="text-3xl font-medium">{product.name}</h1>
                 <CardDescription className="text-lg">

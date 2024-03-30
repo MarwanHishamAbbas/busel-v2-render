@@ -1,6 +1,12 @@
+"use client"
+
 import ProductsList from "@/components/product/ProductsList"
+import SearchFilter from "@/components/product/SearchFilter"
+import { useSearchParams } from "next/navigation"
 
 const Products = ({}) => {
+  const searchParams = useSearchParams()
+  const category = searchParams.get("category")
   return (
     <section className="container space-y-12">
       {/* TODO: Products Filter  */}
@@ -12,8 +18,11 @@ const Products = ({}) => {
           A collection of high-performing and well-designed Framer templates to
           set up your website
         </p>
+        <SearchFilter />
       </div>
-      <ProductsList query={{ category: "UI", limit: 10, sort: "asc" }} />
+      <ProductsList
+        query={{ category: category ?? undefined, limit: 10, sort: "asc" }}
+      />
     </section>
   )
 }
