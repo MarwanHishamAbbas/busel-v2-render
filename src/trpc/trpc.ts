@@ -1,5 +1,3 @@
-// Trpc init and config file
-
 import { User } from "@/payload-types"
 import { ExpressContext } from "@/server"
 import { TRPCError, initTRPC } from "@trpc/server"
