@@ -1,5 +1,8 @@
 import { appRouter } from "@/trpc"
-import { fetchRequestHandler } from "@trpc/server/adapters/fetch"
+import {
+  fetchRequestHandler,
+  FetchCreateContextFnOptions,
+} from "@trpc/server/adapters/fetch"
 
 const handler = (req: Request) => {
   fetchRequestHandler({
@@ -7,7 +10,11 @@ const handler = (req: Request) => {
     req,
     router: appRouter,
     // @ts-expect-error context already passed from express middleware
-    createContext: () => ({}),
+    createContext: () => ({
+      function(opts: FetchCreateContextFnOptions): object | Promise<object> {
+        return {}
+      },
+    }),
   })
 }
 
