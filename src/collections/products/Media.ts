@@ -1,5 +1,20 @@
-import { User } from "../../payload-types"
+import { AfterChangeHook } from "payload/dist/collections/config/types"
+import { type Media, User } from "@/payload-types"
 import { Access, CollectionConfig } from "payload/types"
+import { put } from "@vercel/blob"
+
+const afterChangeHook: AfterChangeHook<Media> = async ({
+  doc, // full document data
+  req, // full express request
+  previousDoc, // document data before updating the collection
+  operation, // name of the operation ie. 'create', 'update'
+}) => {
+  // const blob = await put(doc.filename as string, doc.id, {
+  //   access: "public",
+  // })
+  console.log(doc)
+  return doc
+}
 
 const isAdminOrHasAccessToImages =
   (): Access =>
@@ -16,7 +31,7 @@ const isAdminOrHasAccessToImages =
     }
   }
 
-export const Media: CollectionConfig = {
+export const Medias: CollectionConfig = {
   slug: "media",
   hooks: {
     beforeChange: [
@@ -24,6 +39,7 @@ export const Media: CollectionConfig = {
         return { ...data, user: req.user.id }
       },
     ],
+    afterChange: [afterChangeHook],
   },
   access: {
     read: async ({ req }) => {
@@ -42,8 +58,8 @@ export const Media: CollectionConfig = {
     hidden: ({ user }) => user.role !== "admin",
   },
   upload: {
-    staticURL: "/media",
-    staticDir: "media",
+    disableLocalStorage: true,
+
     imageSizes: [
       {
         name: "thumbnail",

@@ -11,6 +11,11 @@ const nextConfig = {
         protocol: "https",
         hostname: "busel.onrender.com",
       },
+      {
+        protocol: "https",
+        hostname: "my-blob-store.public.blob.vercel-storage.com",
+        port: "",
+      },
     ],
   },
 }

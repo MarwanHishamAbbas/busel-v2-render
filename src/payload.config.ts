@@ -4,14 +4,14 @@ import { webpackBundler } from "@payloadcms/bundler-webpack"
 import { slateEditor } from "@payloadcms/richtext-slate"
 import { buildConfig } from "payload/config"
 import { Products } from "./collections/products/Products"
-import { Media } from "./collections/products/Media"
+import { Medias } from "./collections/products/Media"
 import { ProductFile } from "./collections/products/ProductFile"
 import { Orders } from "./collections/Orders"
 import { Users } from "./collections/Users"
 
 export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL || "",
-  collections: [Users, Products, Media, ProductFile, Orders],
+  collections: [Users, Products, Medias, ProductFile, Orders],
   admin: {
     user: Users.slug,
     bundler: webpackBundler(),
